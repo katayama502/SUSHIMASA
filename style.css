@@ -1,0 +1,209 @@
+:root {
+    --navy: #002b5b;      /* メインの紺色 */
+    --gold: #c5a059;      /* アクセントの金 */
+    --white: #ffffff;
+    --text-dark: #333;
+    --bg-gray: #f4f4f4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* Header */
+header {
+    background: var(--white);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--navy);
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.pc-nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.pc-nav ul li a {
+    text-decoration: none;
+    color: var(--navy);
+    font-weight: bold;
+    margin-left: 30px;
+    transition: 0.3s;
+}
+
+.btn-contact {
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+
+/* Hero */
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,43,91,0.5), rgba(0,43,91,0.5)),
+                url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero-text h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 4rem;
+    letter-spacing: 0.2em;
+    margin: 10px 0;
+}
+
+.sub-copy {
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+    padding: 5px 20px;
+    letter-spacing: 0.3em;
+}
+
+/* Section Common */
+.section { padding: 100px 0; }
+.section-title {
+    font-family: 'Noto Serif JP', serif;
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 15px auto;
+}
+.about-section {
+    padding: 100px 0;
+    background-color: #fff;
+}
+
+.about-content {
+    max-width: 800px;    /* 読みやすい幅に制限 */
+    margin: 0 auto;      /* PCで外枠を中央寄せ */
+    text-align: center;  /* 中のテキストを中央寄せ */
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 2.2;    /* 行間を広げて高級感を出す */
+    word-break: break-all;
+}
+/* Menu Section (Navy Background) */
+.menu-section {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.text-white { color: var(--white); }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.menu-card {
+    background: var(--white);
+    color: var(--text-dark);
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+/* 画像コンテナの調整 */
+.menu-img-container {
+    height: 250px; /* 高さを固定 */
+    overflow: hidden;
+    background-color: var(--navy); /* 読み込み前の下地 */
+}
+
+.menu-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 背景画像(cover)と同じ挙動にする */
+    transition: transform 0.5s ease;
+}
+
+/* マウスホバー時のエフェクト（SEOには関係ないですがユーザー体験向上） */
+.menu-card:hover .menu-img-container img {
+    transform: scale(1.1);
+}
+
+.menu-info { padding: 20px; text-align: center; }
+
+/* Info Section */
+.info-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table th {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    color: var(--navy);
+}
+.info-table td { padding: 15px; border-bottom: 1px solid #ddd; }
+
+/* Footer */
+.footer {
+    background: #001a38;
+    color: var(--white);
+    padding: 60px 0 20px;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.copy { font-size: 0.8rem; opacity: 0.7; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-text h2 { font-size: 2.5rem; }
+    .info-layout { grid-template-columns: 1fr; }
+    .pc-nav { display: none; }
+}
