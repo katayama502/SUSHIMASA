@@ -69,7 +69,7 @@ header {
 .hero {
     height: 90vh;
     background: linear-gradient(rgba(0,43,91,0.5), rgba(0,43,91,0.5)),
-                url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070') center/cover no-repeat;
+                url('img/top.JPG') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,6 +125,98 @@ header {
     line-height: 2.2;    /* 行間を広げて高級感を出す */
     word-break: break-all;
 }
+/* 大将のおすすめセクション */
+.recommend-section {
+    background-color: #fff;
+    padding-bottom: 50px;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-top: -40px;
+    margin-bottom: 50px;
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.recommend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.recommend-item {
+    background: #fff;
+    transition: 0.3s;
+}
+
+.recommend-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 正方形で統一してモダンに */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.recommend-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.recommend-item:hover .recommend-img img {
+    transform: scale(1.08);
+}
+
+/* 「旬」や「鮮」のバッジ */
+.recommend-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e60012; /* 目立つ赤 */
+    color: #ffffff;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.recommend-body {
+    padding: 20px 5px;
+}
+
+.recommend-body h4 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.recommend-body h4::before {
+    content: "";
+    width: 15px;
+    height: 1px;
+    background: var(--gold);
+    margin-right: 10px;
+}
+
+.recommend-body p {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.7;
+}
+
 /* Menu Section (Navy Background) */
 .menu-section {
     background: var(--navy);
@@ -201,9 +293,95 @@ header {
 
 .copy { font-size: 0.8rem; opacity: 0.7; }
 
+/* 詳細メニューセクションの背景色（より深い紺） */
+.bg-navy-dark {
+    background-color: #001a38;
+}
+
+.menu-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.menu-category {
+    background: #ffffff; /* 文字の可読性を高めるため白背景 */
+    color: #333;
+    border-radius: 8px;
+    overflow: hidden; /* 画像の角丸を適用するため */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.menu-category:hover {
+    transform: translateY(-5px);
+}
+
+/* カテゴリ画像のスタイル */
+.category-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: var(--navy);
+}
+
+.category-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.menu-category:hover .category-img img {
+    transform: scale(1.1);
+}
+
+/* カード内部のテキスト調整 */
+.menu-category h4 {
+    color: var(--navy);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    margin: 20px 20px 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+}
+
+.menu-list {
+    padding: 0 20px 25px;
+}
+
+.menu-list h5 {
+    color: var(--navy);
+    margin: 15px 0 5px 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-left: 3px solid var(--gold);
+    padding-left: 8px;
+}
+
+.menu-list p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero-text h2 { font-size: 2.5rem; }
     .info-layout { grid-template-columns: 1fr; }
     .pc-nav { display: none; }
+    .menu-category { padding: 20px;}
+    .recommend-grid {
+        grid-template-columns: 1fr 1fr; /* スマホでは2列並び */
+        gap: 15px;
+    }
+    .recommend-body h4 {
+        font-size: 1.1rem;
+    }
+    .recommend-body p {
+        font-size: 0.8rem;
+    }
 }
