@@ -361,7 +361,8 @@ header {
     transition: transform 0.3s ease;
 }
 
-.menu-category:hover h4::after {
+.menu-category:hover h4::after,
+.menu-category.is-active h4::after {
     transform: rotate(180deg);
 }
 
@@ -375,7 +376,8 @@ header {
     padding: 0 20px; /* Initial minimal padding */
 }
 
-.menu-category:hover .menu-box {
+.menu-category:hover .menu-box,
+.menu-category.is-active .menu-box {
     max-height: 1000px; /* Sufficiently large height to fit content */
     opacity: 1;
     padding: 10px 20px 25px; /* Restore padding on open */
