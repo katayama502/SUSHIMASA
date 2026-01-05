@@ -305,16 +305,20 @@ header {
 }
 
 .menu-category {
-    background: #ffffff; /* 文字の可読性を高めるため白背景 */
+    background: #ffffff;
     color: #333;
     border-radius: 8px;
-    overflow: hidden; /* 画像の角丸を適用するため */
+    overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Require interaction hint */
+    position: relative;
+    padding-bottom: 10px; /* Small padding at bottom for separation when closed */
 }
 
 .menu-category:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 /* カテゴリ画像のスタイル */
@@ -341,30 +345,131 @@ header {
     color: var(--navy);
     font-family: 'Noto Serif JP', serif;
     font-size: 1.3rem;
-    margin: 20px 20px 10px;
-    padding-bottom: 5px;
+    margin: 20px 20px 0; /* Removing bottom margin to align with accordion */
+    padding-bottom: 10px;
     border-bottom: 2px solid var(--gold);
-    display: inline-block;
+    display: flex; /* Changed to flex for arrow alignment */
+    justify-content: space-between;
+    align-items: center;
 }
 
-.menu-list {
-    padding: 0 20px 25px;
+/* Accordion Arrow */
+.menu-category h4::after {
+    content: "▼";
+    font-size: 0.8rem;
+    color: var(--gold);
+    transition: transform 0.3s ease;
 }
 
-.menu-list h5 {
+.menu-category:hover h4::after {
+    transform: rotate(180deg);
+}
+
+/* Accordion Body */
+/* New Menu List Styles */
+.menu-box {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+    padding: 0 20px; /* Initial minimal padding */
+}
+
+.menu-category:hover .menu-box {
+    max-height: 1000px; /* Sufficiently large height to fit content */
+    opacity: 1;
+    padding: 10px 20px 25px; /* Restore padding on open */
+}
+
+.menu-price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-price-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    border-bottom: 1px dotted #e0e0e0;
+    padding-bottom: 2px;
+}
+
+.menu-price-list li:last-child {
+    border-bottom: none;
+}
+
+.menu-price-list li .name {
+    font-weight: 500;
     color: var(--navy);
-    margin: 15px 0 5px 0;
-    font-size: 0.9rem;
-    font-weight: 700;
-    border-left: 3px solid var(--gold);
-    padding-left: 8px;
+    position: relative;
+    padding-right: 10px;
 }
 
-.menu-list p {
+.menu-price-list li .price {
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-weight: normal;
+    background-color: var(--gold);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Helper Classes */
+.small-text {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #666;
+}
+
+.menu-note {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-size: 0.85rem;
     color: #555;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.note-item {
+    display: block !important; /* Override flex */
+    border-bottom: none !important;
+    margin-top: -8px;
+    margin-bottom: 15px !important;
+    padding-left: 10px;
+}
+
+.note-item .small {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Responsive adjustments for menu list */
+@media (max-width: 400px) {
+    .menu-price-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .menu-price-list li .price {
+        align-self: flex-end;
+    }
 }
 
 
