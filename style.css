@@ -502,6 +502,7 @@ header {
 
 /* Mobile Nav Overlay */
 .sp-nav {
+    display: none; /* Hide by default on PC */
     position: fixed;
     top: 0;
     left: 0;
@@ -509,7 +510,6 @@ header {
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.98);
     z-index: 1500;
-    display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -555,4 +555,8 @@ header {
 /* Responsive adjustments for Hamburger */
 @media (max-width: 768px) {
     .hamburger { display: block; }
+    
+    .sp-nav {
+        display: flex; /* Restore flex for mobile layout */
+    }
 }
