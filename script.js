@@ -56,3 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(category);
     });
 });
+
+// Hamburger Menu Toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const spNav = document.querySelector('.sp-nav');
+
+    if (hamburger && spNav) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            spNav.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        spNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                spNav.classList.remove('active');
+            });
+        });
+    }
+});

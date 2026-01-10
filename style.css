@@ -123,7 +123,6 @@ header {
 .about-content p {
     font-size: 1.1rem;
     line-height: 2.2;    /* 行間を広げて高級感を出す */
-    word-break: break-all;
 }
 /* 大将のおすすめセクション */
 .recommend-section {
@@ -261,6 +260,10 @@ header {
 .menu-info { padding: 20px; text-align: center; }
 
 /* Info Section */
+.info-section {
+    background-color: var(--bg-gray);
+}
+
 .info-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -353,33 +356,18 @@ header {
     align-items: center;
 }
 
-/* Accordion Arrow */
+/* Accordion Arrow Removed */
 .menu-category h4::after {
-    content: "▼";
-    font-size: 0.8rem;
-    color: var(--gold);
-    transition: transform 0.3s ease;
-}
-
-.menu-category:hover h4::after,
-.menu-category.is-active h4::after {
-    transform: rotate(180deg);
+    display: none;
 }
 
 /* Accordion Body */
 /* New Menu List Styles */
 .menu-box {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
-    padding: 0 20px; /* Initial minimal padding */
-}
-
-.menu-category:hover .menu-box,
-.menu-category.is-active .menu-box {
-    max-height: 1000px; /* Sufficiently large height to fit content */
+    max-height: none;
     opacity: 1;
+    overflow: visible;
+    transition: none;
     padding: 10px 20px 25px; /* Restore padding on open */
 }
 
@@ -488,7 +476,83 @@ header {
     .recommend-body h4 {
         font-size: 1.1rem;
     }
-    .recommend-body p {
-        font-size: 0.8rem;
+    .about-content p {
+        font-size: 0.85rem; /* スマホで改行崩れを防ぐため少し小さく */
     }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 2000;
+}
+
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--navy);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Mobile Nav Overlay */
+.sp-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    z-index: 1500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
+.sp-nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+.sp-nav ul li {
+    margin: 20px 0;
+}
+
+.sp-nav ul li a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Noto Serif JP', serif;
+}
+
+/* Active States */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-7px, -6px);
+}
+
+.sp-nav.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for Hamburger */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
 }
