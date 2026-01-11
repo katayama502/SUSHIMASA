@@ -69,12 +69,20 @@ header {
 .hero {
     height: 90vh;
     background: linear-gradient(rgba(0,43,91,0.5), rgba(0,43,91,0.5)),
-                url('img/top.JPG') center/cover no-repeat;
+                url('img/top.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
     text-align: center;
+}
+
+/* スマホ用トップ画像設定 */
+@media (max-width: 768px) {
+    .hero {
+        background: linear-gradient(rgba(0,43,91,0.5), rgba(0,43,91,0.5)),
+                    url('img/top-sp.jpg') center/cover no-repeat;
+    }
 }
 
 .hero-text h2 {
@@ -489,6 +497,18 @@ header {
     top: 15px;
     right: 20px;
     z-index: 2000;
+    text-align: center; /* Center the text */
+}
+
+/* Menu Label */
+.menu-label {
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .hamburger span {
@@ -496,7 +516,7 @@ header {
     width: 30px;
     height: 3px;
     background-color: var(--navy);
-    margin: 6px 0;
+    margin: 5px auto; /* Center lines if container is wider, though width matches lines */
     transition: 0.4s;
 }
 
